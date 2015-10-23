@@ -15,13 +15,19 @@ $('form').submit(function() {
     $(this).find('input').each(function(){
         plane.set($(this).attr('id'), $(this).val());
         $(this).val('');
-    })
+    });
+
+    $(this).find('textarea').each(function() {
+
+        plane.set($(this).attr('id'), $(this).val());
+        $(this).val('');
+    });
 
     // After setting each property, save your new instance back to your database
     plane.save(null, {
         success:getData
-    })
-    return false
+    });
+    return false;
 })
 
 // Write a function to get data
@@ -57,12 +63,12 @@ var buildList = function(data) {
 // This function takes in an item, adds it to the screen
 var addItem = function(item) {
     // Get parameters (color, plane, hotspot) from the data item passed to the function
-    var color = item.get('color')
-    var plane = item.get('plane')
-    var hotspot = item.get('hotspot')
-    
+    var color = item.get('color');
+    var plane = item.get('plane');
+    var hotspot = item.get('hotspot');
+    var comment = item.get('comment');
     // Append li that includes text from the data item
-    var li = $('<li>Check out ' + plane + ', their best hotspot is ' + hotspot + '</li>')
+    var li = $('<li>Check out ' + plane + '! Their most famous tourist attractions is ' + hotspot + '. Here is what people have said: ' + comment + '</li>')
     
     // Create a button with a <span> element (using bootstrap class to show the X)
     var button = $('<button class="btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>')
@@ -81,4 +87,8 @@ var addItem = function(item) {
 }
 
 // Call your getData function when the page loads
-getData()
+getData();
+
+
+$('#star').raty({ half: true });
+

@@ -7,15 +7,21 @@
         <meta name="author" content="Arvindram Krishnamoorthy">
         <meta name="description" content="Reviews for 'Magic the Gathering' Planes">
 
+        <link rel="stylesheet" href="css/main.css"> 
+
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/latest/css/font-awesome.css" rel="stylesheet">
 
         <!-- Include parse library here -->
         <script src="//www.parsecdn.com/js/parse-1.6.0.min.js"></script>
+        
+        <script src="js/raty-fa-0.1.1/lib/jquery.raty-fa.js"></script>
+        <div></div>
     </head>
     <body>
         <div class="container">
-            <form>
+            <form id="usrform">
                 <h1>To where should I planeswalk?</h1>
                 <div class="form-group">
                     <label for="plane">Plane name</label>
@@ -29,6 +35,11 @@
                 <div class="form-group">
                     <label for="color">Primary Color Alignment</label>
                     <input class="form-control" id="color" placeholder="Alignment">
+                </div>
+                <div id= "star"></div>
+                <div class="form-group">
+                    <label for="comment" id="label">A penny for your thoughts?</label>
+                    <textarea class="form-control" id="comment" form="usrform" rows="3"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Add Review!</button>
             </form>
