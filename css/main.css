@@ -1,9 +1,5 @@
-#hi {
-	background-color: blue;
-}
-
 .form-control {
-	width: inherit;
+	max-width: 300px;
 }
 
 .spacing {
@@ -20,7 +16,7 @@
 }
 
 #space {
-	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 #list {
@@ -28,7 +24,7 @@
 }
 
 #header {
-		background-image: url(../img/4header.jpg);
+		background-image: url(../img/3header.jpg);
 		background-repeat: no-repeat;
 		min-height: 550px;
 }

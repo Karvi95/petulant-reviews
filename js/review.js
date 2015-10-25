@@ -31,12 +31,12 @@ $('form').submit(function() {
         $(this).val('');
     });
 
-/*    var ratings = $('#star').raty({
-    click:function(score, event) {
-        ratings = score;
-        console.log('Score:' + score);
-        ratings = parseInt(ratings);
-    }});
+/*  var ratings = $('#star').raty({
+        click:function(score, event) {
+            ratings = score;
+            ratings = parseInt(ratings);
+        }
+    });
     plane.set('ratings', ratings);*/
 
     // After setting each property, save your new instance back to your database
@@ -83,23 +83,37 @@ var addItem = function(item) {
     var plane = item.get('plane');
     var hotspot = item.get('hotspot');
     var comment = item.get('comment');
+    var ratings = item.get('ratings');
     // Append li that includes text from the data item
     var li = $('<li>Check out ' + plane + '! Their most famous tourist attractions is ' + hotspot + '. Here is what people have said: ' + comment + '</li>')
     
     // Create a button with a <span> element (using bootstrap class to show the X)
-    var button = $('<button class="btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>')
-    
+    var buttonClose = $('<button class="btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button><div></div>');
+    var buttonUp = $('<button class="btn-primary btn-xs"> <span class="glyphicon glyphicon-thumbs-up"> </span></button> +');
+    var buttonDown = $('<button class="btn-primary btn-xs"><span class="glyphicon glyphicon-thumbs-down"></span></button>');
+
     // Click function on the button to destroy the item, then re-call getData
-    button.click(function() {
+    buttonClose.click(function() {
         item.destroy({
             success:getData
         })
     })
 
+/*    buttonUp.click(function() {
+        item.increment('ratings');
+        item.save();
+    })
+
+    buttonDown.click(function() {
+        items.decrement('ratings');
+        item.save();
+    })   */ 
+
     // Append the button to the li, then the li to the ol
-    li.append(button);
-    $('ol').append(li)
-    
+    li.append(buttonClose);
+    li.append(buttonUp);
+    li.append(buttonDown);
+    $('ol').append(li);
 }
 
 // Call your getData function when the page loads
