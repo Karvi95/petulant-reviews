@@ -4,6 +4,14 @@ Parse.initialize('njJAclkNheZu7lDJTbvCqvqPX0n4KGdoTPEDT0R5', 'C88cKJ2Lms975Xx59o
 // Create a new sub-class of the Parse.Object, with name "Multiverse"
 var Multiverse = Parse.Object.extend('Multiverse');
 
+$('#star').raty({ 
+    hints: ['a', '12', '24', 'orz', '*_*'],
+    cancel: true,
+    cancelOff: 'fa fa-fw fa-minus-square-o',
+    cancelOn: 'fa fa-fw fa-minus-square'
+});
+
+
 // Click event when form is submitted
 $('form').submit(function() {
 
@@ -22,6 +30,14 @@ $('form').submit(function() {
         plane.set($(this).attr('id'), $(this).val());
         $(this).val('');
     });
+
+/*    var ratings = $('#star').raty({
+    click:function(score, event) {
+        ratings = score;
+        console.log('Score:' + score);
+        ratings = parseInt(ratings);
+    }});
+    plane.set('ratings', ratings);*/
 
     // After setting each property, save your new instance back to your database
     plane.save(null, {
