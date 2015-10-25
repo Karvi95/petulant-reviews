@@ -20,33 +20,41 @@
         <div></div>
     </head>
     <body>
-        <div class="container">
-            <form id="usrform">
-                <h1>To where should I planeswalk?</h1>
-                <div class="form-group">
-                    <label for="plane">Plane name</label>
-                    <input class="form-control" id="plane" placeholder="Plane">
-                </div>
-                <div class="form-group">
-                    <label for="hotspot">Tourist Hotspot</label>
-                    <input class="form-control" id="hotspot" placeholder="Region">
-                    <p class="help-block">Example block-level help text here.</p>
-                </div>
-                <div class="form-group">
-                    <label for="color">Primary Color Alignment</label>
-                    <input class="form-control" id="color" placeholder="Alignment">
-                </div>
-                <div id= "star"></div>
-                <div class="form-group">
-                    <label for="comment" id="label">A penny for your thoughts?</label>
-                    <textarea class="form-control" id="comment" form="usrform" rows="3"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Add Review!</button>
-            </form>
+        <div class="container-fluid" id= "header">
+        <h1 align="center"><b><font color="black">Magic the Gathering<sup>&copy; &amp; &reg;</sup></font></b></h1><p align="center"><font color="black"> is a delightfully immersive and strategic cardgame with thousands of strange and fascinating locations. As powerful mage, your planeswalker spark has ignited!</font></p><h4><font color="black">So now you must ask yourself a simple question: </font></h4>
+            <div class="container">
+                <form id="usrform">
+                    <h1>"To where should I planeswalk?"</h1>
+                    <div class="form-group">
+                        <label for="plane">Plane name</label>
+                        <input class="form-control" id="plane" placeholder="Plane" size="12">
+                    </div>
+                    <div class="form-group">
+                        <label for="hotspot">Tourist Hotspot</label>
+                        <input class="form-control" id="hotspot" placeholder="Region" size="12">
+                        <p class="help-block">Example block-level help text here.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="color">Primary Color Alignment</label>
+                        <input class="form-control" id="color" placeholder="Alignment" size="12">
+                    </div class="spacing">
+                    <div id= "star"></div>
+                    <div class="form-group">
+                        <label for="comment" id="label">A penny for your thoughts?</label>
+                        <textarea class="form-control" id="comment" form="usrform" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Review!</button>
+                </form>
+            </div>
         </div>
-        <div class="container">
-            <ol id="list">
-            </ol>
+
+        <div id= "space"></div>
+
+        <div class="container-fluid" id= "body">
+            <div class="container">
+                <ol id="list">
+                </ol>
+            </div>
         </div>
     </body>
     <script type="text/javascript" src="js/review.js"></script>

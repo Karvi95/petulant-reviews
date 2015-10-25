@@ -88,7 +88,3 @@ var addItem = function(item) {
 
 // Call your getData function when the page loads
 getData();
-
-
-$('#star').raty({ half: true });
-

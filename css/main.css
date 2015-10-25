@@ -1,12 +1,51 @@
-@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css); 
+.form-control {
+	width: inherit;
+}
 
-#label{
-	margin-top: 27px;
+.spacing {
+	margin-bottom: 10px;
+}
+
+#label {
+	margin-top: 10px;
 }
 
 .resizable(@direction: both) {
-  // Options: horizontal, vertical, both
   resize: @direction;
-  // Safari fix
   overflow: auto;
+}
+
+#space {
+	margin-top: 10px;
+}
+
+#list {
+	margin-top: 5px;
+}
+
+#header {
+		background-image: url(../img/4header.jpg);
+		background-repeat: no-repeat;
+		min-height: 550px;
+}
+
+button {
+	margin-bottom: 10px;
+
+}
+
+form {
+	color: white;
+}
+
+body {
+	font-family:Lato, 'Helvetica Neue', Helvetica, sans-serif;       
+	font-size: 16px;
+	font-weight: 300;
+	background-color: #E9EAEE;
+}																 			
+
+h1, h2, h3,
+h4, h5, h6 {
+	font-family:Raleway, 'Helvetica Neue', Helvetica, sans-serif;
 }
