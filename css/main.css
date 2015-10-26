@@ -2,6 +2,22 @@
 	max-width: 300px;
 }
 
+#starAverage {
+	display: inline;
+}
+
+#othrMessage {
+	display: inline;
+}
+
+#averageMessage {
+	display: inline;
+	text-align: right;
+	margin-left: 700px;
+}
+
+
+
 .spacing {
 	margin-bottom: 10px;
 }

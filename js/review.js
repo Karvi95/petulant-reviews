@@ -1,6 +1,8 @@
 // Initialize Parse app
 Parse.initialize('njJAclkNheZu7lDJTbvCqvqPX0n4KGdoTPEDT0R5', 'C88cKJ2Lms975Xx59oRTq5ULOtbrKhemDtFUrhCS');
 
+var totalRatingsCount = 0;
+
 // Create a new sub-class of the Parse.Object, with name "Multiverse"
 var Multiverse = Parse.Object.extend('Multiverse');
 
@@ -8,7 +10,8 @@ $('#star').raty({
     hints: ['"Pale Moon"', '"Shelkin Brownie"', '"Thoughtseize"', '"Jace the Mind-Sculptor"', '"Ancestral Recall"'],
     cancel: true,
     cancelOff: 'fa fa-fw fa-minus-square-o',
-    cancelOn: 'fa fa-fw fa-minus-square'
+    cancelOn: 'fa fa-fw fa-minus-square',
+    score: 0,
 });
 
 // Click event when form is submitted
@@ -25,32 +28,22 @@ $('form').submit(function() {
     plane.set('comment', $('#comment').val());
 
     plane.set('helpful', 0);
-    plane.set('unhelpful', 0);
     
     plane.set('ratings', $('#star').raty('score'));
-
-
-
-/*    var ratings = $('#star').raty('score');
-    ratings = parseInt(ratings, 0);
-    plane.set('ratings', ratings);
-
+    
     $(this).find('input').each(function(){
-        plane.set($(this).attr('id'), $(this).val());
         $(this).val('');
-    });
+    })
 
     $(this).find('textarea').each(function() {
-        plane.set($(this).attr('id'), $(this).val());
         $(this).val('');
-    });*/
-
+    });
 
     // After setting each property, save your new instance back to your database
     plane.save(null, {
         success:getData
     });
-    //return false;
+    return false;
 })
 
 // Write a function to get data
@@ -77,32 +70,54 @@ var buildList = function(data) {
     // Empty out your ordered list
     $('ol').empty()
 
+    // Calculating on average, how good a place the Multiverse is to live in
+    var count = 0;
+    var denom = data.length;
+    for(var i = 0; i < denom; i++) {
+        count += data[i].get('ratings');
+    }
+    count /= denom;
+    $('#starAverage').raty({readOnly: true, score: count});
+
     // Loop through your data, and pass each element to the addItem function
     data.forEach(function(d){
-        addItem(d);
+        addItem(d, denom);
     })
 }
 
 // This function takes in an item, adds it to the screen
-var addItem = function(item) {
+var addItem = function(item, parseSize) {
     // Get parameters (color, plane, hotspot) from the data item passed to the function
     var color = item.get('color');
     var plane = item.get('plane');
     var hotspot = item.get('hotspot');
     var comment = item.get('comment');
-    var ratings = item.get('ratings');
+    var ratings = (ratings !== undefined) ? parseInt(item.get('ratings')) : 0;  
+    var helpful = item.get('helpful');
+    var h5 = $('<h5>');
+
+    console.log((ratings !== undefined), parseInt(item.get('ratings')))
+
+    console.log(item);
+
     // Append li that includes text from the data item
-    // var li = $('<li>Check out ' + plane + '! Their most famous tourist attractions is ' + hotspot + '. Here is what people have said: ' + comment + '</li>')
+    var li = $('<div class="well">').html('<h5 id="starRev"></h5>' + '<h3>Check out ' + '<b id="findPlane">' + '!</b></h3>' + '<p><h4>Their most famous tourist attractions is <em id= "findHotspot">' + 
+        '</em>. </h4></p><h3 id= "findComment"> Here is what people have said: </h3>');
     
-    var li = $('<div id="reviewBox">').html("<h5></h5>" + "<h3>Check out " + "<b>" + plane + "!</b></h3>" + '<p><h4>Their most famous tourist attractions is <em>' + hotspot 
-        + "</em>. </h4></p><h3> Here is what people have said: </h3>" + comment);
-    $('h5').raty({readOnly: true, score: item.get('ratings')});
+    h5.raty({readOnly: true, score: ratings});
+    
+
+    li.find('#findPlane').text(plane);
+    li.find('#findHotspot').text(hotspot);
+    li.find('#findComment').text(comment);
+
+
 
     // Create a button with a <span> element (using bootstrap class to show the X)
-    var buttonClose = $('<button align="right" class="btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>');
-
-    var buttonUp = $('<div></div><button class="btn-primary btn-xs"> <span class="glyphicon glyphicon-thumbs-up"> </span></button> +');
+    var buttonClose = $('<button class="btn-danger btn-xs"><span class="glyphicon glyphicon-remove-sign"></span></button>');
+    var buttonUp = $('<div></div><button class="btn-primary btn-xs"> <span class="glyphicon glyphicon-thumbs-up"></span></button>');
     var buttonDown = $('<button class="btn-primary btn-xs"><span class="glyphicon glyphicon-thumbs-down"></span></button>');
+    var othrLi = $('<p>' + helpful + ' out of ' + parseSize+ ' found this review helpful</p>')
 
     // Click function on the button to destroy the item, then re-call getData
     buttonClose.click(function() {
@@ -113,16 +128,19 @@ var addItem = function(item) {
 
    buttonUp.click(function() {
         item.increment('helpful');
+        item.save();        
     })
 
     buttonDown.click(function() {
-        items.increment('unhelpful');
+        item.decrement('helpful');
+        item.save();
     }) 
 
     // Append the button to the li, then the li to the ol
     li.append(buttonClose);
     li.append(buttonUp);
     li.append(buttonDown);
+    li.append(othrLi);
     $('ol').append(li);
 }
 
