@@ -11,7 +11,6 @@ $('#star').raty({
     cancelOn: 'fa fa-fw fa-minus-square'
 });
 
-
 // Click event when form is submitted
 $('form').submit(function() {
 
@@ -26,18 +25,18 @@ $('form').submit(function() {
     });
 
     $(this).find('textarea').each(function() {
-
         plane.set($(this).attr('id'), $(this).val());
         $(this).val('');
     });
 
-/*  var ratings = $('#star').raty({
+    var ratings = $('#star').raty({
         click:function(score, event) {
-            ratings = score;
-            ratings = parseInt(ratings);
+            ratings = score
         }
     });
-    plane.set('ratings', ratings);*/
+    ratings = parseInt(ratings, 0);
+    plane.set('ratings', ratings);
+    plane.save();
 
     // After setting each property, save your new instance back to your database
     plane.save(null, {
@@ -84,6 +83,8 @@ var addItem = function(item) {
     var hotspot = item.get('hotspot');
     var comment = item.get('comment');
     var ratings = item.get('ratings');
+    var helpful = item.set('helpful', 0);
+    var unhelpful = item.set('unhelpful', 0);
     // Append li that includes text from the data item
     var li = $('<li>Check out ' + plane + '! Their most famous tourist attractions is ' + hotspot + '. Here is what people have said: ' + comment + '</li>')
     
@@ -100,12 +101,12 @@ var addItem = function(item) {
     })
 
 /*    buttonUp.click(function() {
-        item.increment('ratings');
+        item.increment('helpful');
         item.save();
     })
 
     buttonDown.click(function() {
-        items.decrement('ratings');
+        items.increment('unhelpful');
         item.save();
     })   */ 
 
