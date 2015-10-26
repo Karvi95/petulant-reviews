@@ -18,7 +18,22 @@ $('form').submit(function() {
     var plane = new Multiverse();
 
     // For each input element, set a property of your new instance equal to the input's value
+  
+    plane.set('plane', $('#plane').val());
+    plane.set('hotspot', $('#hotspot').val());
+    plane.set('color', $('#color').val());
     
+    plane.set('helpful', 0);
+    plane.set('unhelpful', 0);
+    
+    plane.set('ratings', $('#star').raty('score'));
+
+
+
+/*    var ratings = $('#star').raty('score');
+    ratings = parseInt(ratings, 0);
+    plane.set('ratings', ratings);
+
     $(this).find('input').each(function(){
         plane.set($(this).attr('id'), $(this).val());
         $(this).val('');
@@ -27,22 +42,14 @@ $('form').submit(function() {
     $(this).find('textarea').each(function() {
         plane.set($(this).attr('id'), $(this).val());
         $(this).val('');
-    });
+    });*/
 
-    var ratings = $('#star').raty({
-        click:function(score, event) {
-            ratings = score
-        }
-    });
-    ratings = parseInt(ratings, 0);
-    plane.set('ratings', ratings);
-    plane.save();
 
     // After setting each property, save your new instance back to your database
     plane.save(null, {
         success:getData
     });
-    return false;
+    //return false;
 })
 
 // Write a function to get data
@@ -83,8 +90,6 @@ var addItem = function(item) {
     var hotspot = item.get('hotspot');
     var comment = item.get('comment');
     var ratings = item.get('ratings');
-    var helpful = item.set('helpful', 0);
-    var unhelpful = item.set('unhelpful', 0);
     // Append li that includes text from the data item
     var li = $('<li>Check out ' + plane + '! Their most famous tourist attractions is ' + hotspot + '. Here is what people have said: ' + comment + '</li>')
     
@@ -102,12 +107,10 @@ var addItem = function(item) {
 
 /*    buttonUp.click(function() {
         item.increment('helpful');
-        item.save();
     })
 
     buttonDown.click(function() {
         items.increment('unhelpful');
-        item.save();
     })   */ 
 
     // Append the button to the li, then the li to the ol
