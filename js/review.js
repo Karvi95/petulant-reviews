@@ -22,7 +22,8 @@ $('form').submit(function() {
     plane.set('plane', $('#plane').val());
     plane.set('hotspot', $('#hotspot').val());
     plane.set('color', $('#color').val());
-    
+    plane.set('comment', $('#comment').val());
+
     plane.set('helpful', 0);
     plane.set('unhelpful', 0);
     
@@ -91,11 +92,16 @@ var addItem = function(item) {
     var comment = item.get('comment');
     var ratings = item.get('ratings');
     // Append li that includes text from the data item
-    var li = $('<li>Check out ' + plane + '! Their most famous tourist attractions is ' + hotspot + '. Here is what people have said: ' + comment + '</li>')
+    // var li = $('<li>Check out ' + plane + '! Their most famous tourist attractions is ' + hotspot + '. Here is what people have said: ' + comment + '</li>')
     
+    var li = $('<div id="reviewBox">').html("<h5></h5>" + "<h3>Check out " + "<b>" + plane + "!</b></h3>" + '<p><h4>Their most famous tourist attractions is <em>' + hotspot 
+        + "</em>. </h4></p><h3> Here is what people have said: </h3>" + comment);
+    $('h5').raty({readOnly: true, score: item.get('ratings')});
+
     // Create a button with a <span> element (using bootstrap class to show the X)
-    var buttonClose = $('<button class="btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button><div></div>');
-    var buttonUp = $('<button class="btn-primary btn-xs"> <span class="glyphicon glyphicon-thumbs-up"> </span></button> +');
+    var buttonClose = $('<button align="right" class="btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></button>');
+
+    var buttonUp = $('<div></div><button class="btn-primary btn-xs"> <span class="glyphicon glyphicon-thumbs-up"> </span></button> +');
     var buttonDown = $('<button class="btn-primary btn-xs"><span class="glyphicon glyphicon-thumbs-down"></span></button>');
 
     // Click function on the button to destroy the item, then re-call getData
@@ -105,13 +111,13 @@ var addItem = function(item) {
         })
     })
 
-/*    buttonUp.click(function() {
+   buttonUp.click(function() {
         item.increment('helpful');
     })
 
     buttonDown.click(function() {
         items.increment('unhelpful');
-    })   */ 
+    }) 
 
     // Append the button to the li, then the li to the ol
     li.append(buttonClose);
