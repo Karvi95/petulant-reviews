@@ -5,7 +5,7 @@ Parse.initialize('njJAclkNheZu7lDJTbvCqvqPX0n4KGdoTPEDT0R5', 'C88cKJ2Lms975Xx59o
 var Multiverse = Parse.Object.extend('Multiverse');
 
 $('#star').raty({ 
-    hints: ['a', '12', '24', 'orz', '*_*'],
+    hints: ['"Pale Moon"', '"Shelkin Brownie"', '"Thoughtseize"', '"Jace the Mind-Sculptor"', '"Ancestral Recall"'],
     cancel: true,
     cancelOff: 'fa fa-fw fa-minus-square-o',
     cancelOn: 'fa fa-fw fa-minus-square'
