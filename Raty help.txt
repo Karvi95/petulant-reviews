@@ -1,0 +1,14 @@
+$('#star').raty({ 
+    hints: ['a', '12', '24', 'orz', '*_*'],
+    cancel: true,
+    cancelOff: 'fa fa-fw fa-minus-square-o',
+    cancelOn: 'fa fa-fw fa-minus-square'
+});
+
+    var ratings = $('#star').raty({
+    click:function(score, event) {
+        ratings = score;
+        console.log('Score:' + score);
+        ratings = parseInt(ratings);
+    }});
+    plane.set('ratings', ratings);

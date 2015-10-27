@@ -1,3 +1,8 @@
+#reviewStars {
+	float: left;
+}
+	
+
 #commentSpace {
 	display: inline;
 	margin-right: 5px;
