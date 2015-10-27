@@ -28,8 +28,11 @@ $('form').submit(function() {
 
     plane.set('helpful', 0);
     plane.set('totals', 0);
-    
-    plane.set('ratings', $('#star').raty('score'));
+    var score =  $('#star').raty('score')
+    if (score === undefined) {
+        score = 0;
+    }
+    plane.set('ratings', score);
     
     $(this).find('input').each(function(){
         $(this).val('');
@@ -88,13 +91,11 @@ var buildList = function(data) {
 // This function takes in an item, adds it to the screen
 var addItem = function(item) {
     // Get parameters (color, plane, hotspot) from the data item passed to the function
-    var div = $('<div class= "well"></div>')
     var color = item.get('color');
     var plane = item.get('plane');
     var hotspot = item.get('hotspot');
     var comment = item.get('comment');
     var commentProtect = $('<p id="commentSpace">').text(comment);
-    //var ratings = (ratings !== undefined) ? (item.get('ratings')) : 0;  
     var ratings = item.get('ratings');
     var helpful = item.get('helpful');
     var totals = item.get('totals');

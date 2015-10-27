@@ -19,6 +19,7 @@
 
 #starAverage {
 	display: inline;
+	color: white;
 }
 
 #othrMessage {
@@ -71,8 +72,12 @@ body {
 	font-family:Lato, 'Helvetica Neue', Helvetica, sans-serif;       
 	font-size: 16px;
 	font-weight: 300;
-	background-color: #E9EAEE;
 }																 			
+
+#body {
+	background-image: url(../img/background3.jpg);
+	background-repeat: no-repeat;
+}
 
 h1, h2, h3,
 h4, h5, h6 {
