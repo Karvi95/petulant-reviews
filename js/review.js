@@ -100,16 +100,14 @@ var addItem = function(item) {
     var helpful = item.get('helpful');
     var totals = item.get('totals');
 
-    console.log(ratings);
-
     // Append li that includes text from the data item
     var li = $('<div class="well">').html('<h3>Check out ' + '<b id="findPlane">' + '!</b></h3>' + 
     '<p><h4>Their most famous tourist attractions is <em id= "findHotspot">' + '</em>. </h4></p><h3> Here is what people have said: </h3>');
     
     li.append(commentProtect);
 
-    var blah = '<div></div>';
-    var reviewStars = $(blah).raty({readOnly: true, score: ratings});
+    var toBeAdded = '<div></div>';
+    var reviewStars = $(toBeAdded).raty({readOnly: true, score: ratings});
 
     li.prepend(reviewStars);
     

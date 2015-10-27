@@ -1,6 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Arvo);
 @import url(https://fonts.googleapis.com/css?family=Inconsolata);
 
+.well {
+	word-wrap: break-word;
+}
+
 body {     
 	font-size: 16px;
 	font-weight: 300;
