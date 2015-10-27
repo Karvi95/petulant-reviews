@@ -1,3 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Arvo);
+@import url(https://fonts.googleapis.com/css?family=Inconsolata);
+
+body {     
+	font-size: 16px;
+	font-weight: 300;
+}																 			
+
 #reviewStars {
 	float: left;
 }
@@ -29,7 +37,7 @@
 #averageMessage {
 	display: inline;
 	text-align: right;
-	margin-left: 700px;
+	margin-left: 680px;
 }
 
 .spacing {
@@ -53,7 +61,12 @@
 	margin-top: 5px;
 }
 
+#credits {
+	padding-top: 3px;	
+}
+
 #header {
+		font-family:Arvo, 'Helvetica Neue', Helvetica, sans-serif;
 		background-image: url(../img/3header.jpg);
 		background-repeat: no-repeat;
 		min-height: 550px;
@@ -68,18 +81,14 @@ form {
 	color: white;
 }
 
-body {
-	font-family:Lato, 'Helvetica Neue', Helvetica, sans-serif;       
-	font-size: 16px;
-	font-weight: 300;
-}																 			
+
+#footer {
+	background-color: black;	
+}
 
 #body {
+	font-family:Inconsolata, 'Helvetica Neue', Helvetica, sans-serif;
 	background-image: url(../img/background3.jpg);
 	background-repeat: no-repeat;
 }
 
-h1, h2, h3,
-h4, h5, h6 {
-	font-family:Raleway, 'Helvetica Neue', Helvetica, sans-serif;
-}
