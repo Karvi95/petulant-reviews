@@ -19,3 +19,8 @@ While I greatly appreciate how often you are available on Slack, as well as the 
 
 Also, maybe we could have some general lectures on the logic of scripting languages? How scope works/ if there's reference/variable semantics, things like that. Professor Freeman
 does an amazing job explaining how and what we do, perhaps having this (^) lecture could eliminate some of the more common concerns/basic concerns people have with coding.
+
+
+MY REPOSITORY: https://github.com/Karvi95/petulant-reviews
+
+MY WEBSITE: http://students.washington.edu/karvi90/info343/petulant-reviews/
