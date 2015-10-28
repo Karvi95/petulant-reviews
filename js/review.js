@@ -52,10 +52,10 @@ $('form').submit(function() {
 // Write a function to get data
 var getData = function() {
 
-    // Set up a new query for our Music class
+    // Set up a new query for Multiverse class
     var query = new Parse.Query(Multiverse)
 
-    // Set a parameter for your query -- where the website property isn't missing
+    // Set a parameter for the query -- where the website property isn't missing
     query.notEqualTo('plane', '')
 
     /* Execute the query using ".find".  When successful:
@@ -68,7 +68,7 @@ var getData = function() {
     })
 }
 
-// A function to build your list
+// A function to build a list
 var buildList = function(data) {
     // Empty out your ordered list
     $('ol').empty()
@@ -82,7 +82,7 @@ var buildList = function(data) {
     count /= denom;
     $('#starAverage').raty({readOnly: true, score: count});
 
-    // Loop through your data, and pass each element to the addItem function
+    // Loop through  data, and pass each element to the addItem function
     data.forEach(function(d){
         addItem(d, denom);
     })
@@ -91,6 +91,7 @@ var buildList = function(data) {
 // This function takes in an item, adds it to the screen
 var addItem = function(item) {
     // Get parameters (color, plane, hotspot) from the data item passed to the function
+    console.log('itemIS:' + item);
     var color = item.get('color');
     var plane = item.get('plane');
     var hotspot = item.get('hotspot');
@@ -129,6 +130,7 @@ var addItem = function(item) {
         })
     })
 
+    // Click function on the button to display how helpful a review was    
    buttonUp.click(function() {
         item.increment('helpful');
         item.increment('totals');
@@ -142,7 +144,7 @@ var addItem = function(item) {
         getData();
     }) 
 
-    // Append the button to the li, then the li to the ol
+    // Appends buttons to the li, then the li to the ol
     li.append(buttonClose);
     li.append(buttonUp);
     li.append(buttonDown);
@@ -150,5 +152,5 @@ var addItem = function(item) {
     $('ol').append(li);
 }
 
-// Call your getData function when the page loads
+// Call getData function when the page loads
 getData();
